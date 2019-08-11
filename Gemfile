@@ -73,3 +73,5 @@ gem "refile-mini_magick"
 gem 'paranoia'
 
 gem 'dotenv-rails'
+
+gem 'news-api'
