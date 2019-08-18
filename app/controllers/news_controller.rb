@@ -1,4 +1,4 @@
-class NewsesController < ApplicationController
+class NewsController < ApplicationController
 
 	def index
 		newsapi = News.new("67f6f9daca624af0bc02696977dafadb")
@@ -6,7 +6,9 @@ class NewsesController < ApplicationController
 	end
 
 	def show
-		@news = News.find(params[:id])
+
 	end
 
+	def new
+	end
 end

@@ -1,0 +1,16 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<h2><%= link_to "ニュース一覧", admins_news_index_path, class: 'btn-circle-fishy' %></h2>
+		</div>
+		<div class="col-md-3">
+    		<h2><%= link_to "ニュース編集", admins_news_edit_path, class: 'btn-circle-fishy' %></h2>
+    	</div>
+    	<div class="col-md-3">
+    		<h2><%= link_to "ユーザー検索画面", users_seach_path, class: 'btn-circle-fishy' %></h2>
+
+    	<div class="col-md-1 col-md-offset-11">
+    	<%= link_to 'ログアウト',destroy_admin_session_path, method: :delete, class: 'btn-gradient-radius' %>
+    	</div>
+    </div>
+</div>

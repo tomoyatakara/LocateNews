@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_11_092027) do
+ActiveRecord::Schema.define(version: 2019_08_16_054117) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2019_08_11_092027) do
   end
 
   create_table "favorites", force: :cascade do |t|
+    t.integer "name"
     t.integer "user_id"
     t.integer "news_image_id"
     t.datetime "created_at", null: false
@@ -38,16 +39,20 @@ ActiveRecord::Schema.define(version: 2019_08_11_092027) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "goods", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "news", force: :cascade do |t|
+    t.string "title"
+    t.string "text"
+    t.string "image"
+    t.string "genres_id"
+    t.string "regions_id"
+    t.integer "favorites_id"
+    t.string "news_comments_id"
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -55,12 +60,22 @@ ActiveRecord::Schema.define(version: 2019_08_11_092027) do
   create_table "news_comments", force: :cascade do |t|
     t.text "comment"
     t.integer "user_id"
-    t.integer "post_image_id"
+    t.integer "news_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "news_images", force: :cascade do |t|
+    t.text "shop_name"
+    t.text "image_id"
+    t.text "caption"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "regions", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -88,7 +103,7 @@ ActiveRecord::Schema.define(version: 2019_08_11_092027) do
     t.boolean "is_quit", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_id"
+    t.string "newses"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

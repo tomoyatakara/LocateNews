@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get "/admins/news_index" => "admins#index"
   get "/newses/search_index" => "newses#index"
 
-  resources :newses, only: [:new, :create, :index, :show] do
+  resources :newse_imges, only: [:new, :create, :index, :show] do
     resource :news_comments, only: [:create, :destroy]
 end
 
