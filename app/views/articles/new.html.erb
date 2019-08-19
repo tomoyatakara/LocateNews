@@ -1,0 +1,19 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md6 col-offset-3">
+		<%= form_for(@new, url: admins_path) do |news| %>
+	    <% if @new.errors.any? %>
+        <%= @new.errors.count %>件のエラーが発生しました
+        <% @new.errors.full_messages.each do |message| %>
+            <%= message %>
+
+	    <% end %>
+	    <% end %>
+	    <%= news.attachment_field :image %>
+	    <%= news.text_field :title %>
+	    <%= news.text_area :text %>
+	    <%= news.submit %>
+	    <% end %>
+		</div>
+	</div>
+</div>

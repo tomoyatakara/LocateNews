@@ -75,3 +75,5 @@ gem 'paranoia'
 gem 'dotenv-rails'
 
 gem 'news-api'
+
+gem 'pry-byebug'

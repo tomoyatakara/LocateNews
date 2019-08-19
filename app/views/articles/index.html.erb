@@ -2,7 +2,7 @@
 <div class="row user">
 	<div class="col-md-2">
 		<div class="user profile">
-			<%= render'newses/list', user: current_user%>
+			<%= render'news/list', user: current_user%>
 		</div>
 	</div>
 	<div class="col-md-10">
@@ -19,19 +19,10 @@
 			</div>
 	    </div>
 	    <div class="row">
-	    	<%= @newses.each do |n| %>
-	    		<div class="col-md-4">
-	    	    <div class="well user-news">
-	    	    	<%= link_to newse_path %>
-	    			<%= attachment_imge_tag n, :image, format: 'jpeg', fallback: "noimage.jpg", size: "100×100" %>
-	    			<%= news.title %>
-	    			<%= news.text %>
-	    		</div>
-	    		</div>
-	    	<% end %>
+	    	<!--  -->
 	    </div>
 	</div>
-		<% @top_headlines.each do |top_headline| %>
+<!-- 		<% @top_headlines.each  %>
 		<div class="col-md-4">
 			<div class="well">
 
@@ -42,6 +33,10 @@
 
 			</div>
 	    </div>
+		<% %> -->
+<!-- 		<%= @article.title %>
+ -->	<%= @articles.each do |news| %>
+		<%= news.name %>
 		<% end %>
 	</div>
 </div>

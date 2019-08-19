@@ -1,18 +1,18 @@
 class UsersController < ApplicationController
 
 	def new
-		@news = News.new
+		@new = Article.new
 	end
 
 	def create
-		@news = News.new(news_params)
-		@news.save
+		@new = Article.new(new_image_params)
+
 	end
 
 
 	private
 	def news_params
-			params.require(:news).permit(:title, :text, :image)
+			params.require(:article).permit(:title, :text, :image)
 	end
 end
 

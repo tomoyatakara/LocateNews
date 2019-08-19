@@ -12,26 +12,24 @@ Rails.application.routes.draw do
   #   registrations: 'users/registrations'
   # }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'articles#index'
+  resources :admins
+
   resources :users
   # resources :admins
-  root 'newses#index'
-  resources :newses
+
   resources :genres, only: [:index, :show, :create]
   resources :regions, only: [:index, :show, :create]
 
+
   get "/users/seach" => "users#search"
   get "/admins/link" => "admins#link"
-  get "/admins/news_edit" => "admins#edit"
-  get "/admins/news_index" => "admins#index"
-  get "/newses/search_index" => "newses#index"
+  # get "/newses/search_index" => "newses#index"
 
-  resources :newse_imges, only: [:new, :create, :index, :show] do
-    resource :news_comments, only: [:create, :destroy]
-end
 
-  resources :newses, only: [:new, :create, :index, :show] do
+  resources :articles, only: [:new, :create, :show] do
       resource :favorites, only: [:create, :destroy]
-      resource :news_comments, only: [:create, :destroy]
+      resource :article_comments, only: [:create, :destroy]
 end
 
 end
