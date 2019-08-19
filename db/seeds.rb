@@ -49,15 +49,9 @@ uri = URI.parse('https://newsapi.org/v2/top-headlines?country=us&category=busine
 json = Net::HTTP.get(uri) #NET::HTTPを利用してAPIを叩く
 result = JSON.parse(json) #返ってきたjsonデータをrubyの配列に変換
 
-# result['genre'].each do |value|
-#   puts value
-#   Genre.create!(name: value['genre'] )
-
-# result['region'].each do |value|
-#   Region.create!(name: value['region'])
 
 result['articles'].each do |value|
-   puts value
-   Article.create!(title: value['title'], text: value['description'], image: value['urlToImage'], url: value['url'], publishedAt: value['publishedAt'], articles_id: value['id'])
+   # puts value["urlToImage"]
+   Article.create!(title: value['title'], text: value['description'], image: value['urlToImage'], url: value['url'], publishedAt: value['publishedAt'])
    # News.create(title: value)
 end

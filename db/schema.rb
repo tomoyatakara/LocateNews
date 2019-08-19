@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_18_111139) do
+ActiveRecord::Schema.define(version: 2019_08_19_085403) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -48,7 +48,6 @@ ActiveRecord::Schema.define(version: 2019_08_18_111139) do
   end
 
   create_table "articles", force: :cascade do |t|
-    t.integer "articles_id"
     t.string "title"
     t.string "text"
     t.string "image"
@@ -60,8 +59,8 @@ ActiveRecord::Schema.define(version: 2019_08_18_111139) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.datetime "publishedAt"
     t.string "url"
+    t.datetime "publishedAt"
   end
 
   create_table "favorites", force: :cascade do |t|

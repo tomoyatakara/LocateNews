@@ -2,7 +2,7 @@
 <div class="row user">
 	<div class="col-md-2">
 		<div class="user profile">
-			<%= render'news/list', user: current_user%>
+			<%= render'articles/list', user: current_user%>
 		</div>
 	</div>
 	<div class="col-md-10">
@@ -18,25 +18,22 @@
 				</div>
 			</div>
 	    </div>
-	    <div class="row">
-	    	<!--  -->
-	    </div>
-	</div>
-<!-- 		<% @top_headlines.each  %>
-		<div class="col-md-4">
-			<div class="well">
+		<div class="row">
+			<%= @articles.each do |news| %>
+			<div class="col-md-4">
+				<div class="well">
+					<%= link_to news.url do %>
+					    <div class="img-box">
+					    <img src=<%= news.image %>>
+					    </div>
+				        <%= news.name %>
+						<h3><%= news.title %></h3>
+						<p><%= news.text %></p>
+					<% end %>
 
-				<div class="img-box">
-				<img src= <%= top_headline.urlToImage  %>>
-				</div>
-				<h3><%= top_headline.title  %></h3>
-
+				<% end %>
+								</div>
 			</div>
-	    </div>
-		<% %> -->
-<!-- 		<%= @article.title %>
- -->	<%= @articles.each do |news| %>
-		<%= news.name %>
-		<% end %>
-	</div>
+		</div>
+    </div>
 </div>

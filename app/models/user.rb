@@ -5,6 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   belongs_to :article_comment, dependent: :destroy
   belongs_to :favorite, dependent: :destroy
-  has_many :article_imges, dependent: :destroy
+  has_many :article_images, dependent: :destroy
 
 end

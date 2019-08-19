@@ -1,6 +1,6 @@
 class Article < ApplicationRecord
 	belongs_to :genre, optional: true
-	belongs_to :region, optinal: true
+	belongs_to :region, optional: true
 	has_many :article_comments, dependent: :destroy
 	has_many :favotites, dependent: :destroy
 
@@ -8,5 +8,5 @@ class Article < ApplicationRecord
 		favorites.where(user_id: user_id).exists?
 	end
 
-	attachment :image
+	# attachment :image
 end

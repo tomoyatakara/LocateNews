@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   resources :genres, only: [:index, :show, :create]
   resources :regions, only: [:index, :show, :create]
 
-
+  get "/articles/list" => "articles#list"
   get "/users/seach" => "users#search"
   get "/admins/link" => "admins#link"
   # get "/newses/search_index" => "newses#index"
