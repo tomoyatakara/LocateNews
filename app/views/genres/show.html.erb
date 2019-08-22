@@ -18,8 +18,7 @@
 			</div>
 	    </div>
 		<div class="row">
-
-			<%= @genre.articles.each do |article| %>
+			<% @genre.articles.each do |article| %>
 				<div class="col-md-4">
 					<div class="well">
 						<%= link_to article.url do %>
@@ -30,6 +29,9 @@
 							<h3><%= article.title %></h3>
 							<p><%= article.text %></p>
 						<% end %>
+						<div id="favorites_buttons_<%= article.id %>">
+	                    <%= render partial: 'favorites/favorite', locals: { article: article} %>
+	                    </div>
 					</div>
 				</div>
 			<% end %>

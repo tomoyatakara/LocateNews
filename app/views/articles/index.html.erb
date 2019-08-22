@@ -4,6 +4,21 @@
 		<div class="user profile">
 			<%= render'articles/list', user: current_user%>
 		</div>
+		<div class="comment">
+			<%= link_to 'コメントする', articles_image_path, class: "btn-btn primary" %>
+		</div>
+		<h3>世界の国々のニュース</h3>
+		<ul>
+		<li><%= link_to 'アメリカ', region_path(1) , class: "btn btn-default", data: {"turbolinks" => false}%></li>
+        <li><%= link_to 'メキシコ', region_path(2), class: "btn btn-default",data: {"turbolinks" => false}%></li>
+        <li><%= link_to 'ブラジル', region_path(3), class: "btn btn-default",data: {"turbolinks" => false} %></li>
+        <li><%= link_to 'イギリス', region_path(4), class: "btn btn-default",data: {"turbolinks" => false} %></li>
+        <li><%= link_to 'ロシア', region_path(5), class: "btn btn-default",data: {"turbolinks" => false} %></li>
+        <li><%= link_to 'フランス', region_path(6), class: "btn btn-default",data: {"turbolinks" => false} %></li>
+        <li><%= link_to '韓国', region_path(7), class: "btn btn-default",data: {"turbolinks" => false} %></li>
+        <li><%= link_to 'オーストラリア', region_path(8), class: "btn btn-default",data: {"turbolinks" => false} %></li>
+        <li><%= link_to '日本', region_path(9), class: "btn btn-default",data: {"turbolinks" => false} %></li>
+        <ul>
 	</div>
 	<div class="col-md-10">
 	    <div class="row">
@@ -19,21 +34,25 @@
 			</div>
 	    </div>
 		<div class="row">
-			<%= @articles.each do |news| %>
-			<div class="col-md-4">
-				<div class="well">
-					<%= link_to news.url do %>
-					    <div class="img-box">
-					    <img src=<%= news.image %>>
-					    </div>
-				        <%= news.name %>
-						<h3><%= news.title %></h3>
-						<p><%= news.text %></p>
-					<% end %>
+			<% @articles.each do |article| %>
+				<div class="col-md-4">
+					<div class="well">
+						<%= link_to article.url do %>
+						    <div class="img-box">
+						    <img src=<%= article.image %>>
+						    </div>
+					        <%= article.name %>
+							<h3><%= article.title %></h3>
+							<p><%= article.text %></p>
+						<% end %>
+						<div id="favorites_buttons_<%= article.id %>">
+	                        <%= render partial: 'favorites/favorite', locals: { article: article} %>
+	                    </div>
+					</div>
+				</div>
+			<% end %>
 
-				<% end %>
-								</div>
-			</div>
 		</div>
     </div>
+
 </div>

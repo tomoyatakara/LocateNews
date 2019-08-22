@@ -14,14 +14,13 @@
       <div id="sp-menu">
       <h1>MENU</h1>
       <ul>
-        <li><a href="#">総合トップ</a></li>
-        <li><a href="#">マイニュース</a></li>
-        <li><a href="#">テクノロジー</a></li>
-        <li><a href="#">ビジネス</a></li>
-        <li><a href="#">政治・経済</a></li>
-        <li><a href="#">金融・マーケット</a></li>
-        <li><a href="#">キャリア・教育</a></li>
-        <li><a href="#">社会・スポーツ</a></li>
+        <li><%= link_to '総合', root_path , data: {"turbolinks" => false}%></li>
+        <li><%= link_to 'ビジネス', genre_path(1), data: {"turbolinks" => false}%></li>
+        <li><%= link_to 'テクノロジー', genre_path(2), data: {"turbolinks" => false} %></li>
+        <li><%= link_to 'エンターテインメント', genre_path(6), data: {"turbolinks" => false} %></li>
+        <li><%= link_to '健康', genre_path(3), data: {"turbolinks" => false} %></li>
+        <li><%= link_to '科学', genre_path(4), data: {"turbolinks" => false} %></li>
+        <li><%= link_to 'スポーツ', genre_path(5), data: {"turbolinks" => false} %></li>
       </ul>
       </div>
       <div id="hm-icon">
@@ -42,10 +41,16 @@
       <div class="box"></div>
       <div class="box"></div>
       <div class="box"></div>
-      <div class="box"></div>
 
         <div class="logo">
-          <h4><%= link_to 'LocateNews', root_path, :style =>"color:white;" %></h4>
+          <h4><%= link_to 'LocateNews', root_path, :style =>"color:white;" , data: {"turbolinks" => false}%></h4>
+          <div class="log_out">
+            <% if user_signed_in? %>
+              <%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-primary", method: :delete %>
+              <% else %>
+              <h4>welcome</h4>
+            <% end %>
+         </div>
         </div>
         <div class="col-md-12">
         </div>

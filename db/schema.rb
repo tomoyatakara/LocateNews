@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_19_085403) do
+ActiveRecord::Schema.define(version: 2019_08_21_233052) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -38,24 +38,15 @@ ActiveRecord::Schema.define(version: 2019_08_19_085403) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "article_images", force: :cascade do |t|
-    t.text "shop_name"
-    t.text "image_id"
-    t.text "caption"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.string "text"
     t.string "image"
-    t.string "genres_id"
-    t.string "regions_id"
-    t.integer "favorites_id"
-    t.string "article_comments_id"
-    t.string "image_id"
+    t.string "genre_id"
+    t.string "region_id"
+    t.integer "favorite_id"
+    t.string "article_comment_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
@@ -64,9 +55,10 @@ ActiveRecord::Schema.define(version: 2019_08_19_085403) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "name"
+    t.string "name"
     t.integer "user_id"
     t.integer "article_image_id"
+    t.integer "article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -75,12 +67,22 @@ ActiveRecord::Schema.define(version: 2019_08_19_085403) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
+    t.string "text"
+    t.string "image"
+    t.string "url"
+    t.datetime "publishedAt"
   end
 
   create_table "regions", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
+    t.string "text"
+    t.string "image"
+    t.string "url"
+    t.datetime "publishedAt"
   end
 
   create_table "users", force: :cascade do |t|
@@ -104,6 +106,7 @@ ActiveRecord::Schema.define(version: 2019_08_19_085403) do
     t.string "address"
     t.string "phone"
     t.boolean "is_quit", default: false, null: false
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "articles"

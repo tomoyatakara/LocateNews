@@ -24,12 +24,16 @@ Rails.application.routes.draw do
   get "/articles/list" => "articles#list"
   get "/users/seach" => "users#search"
   get "/admins/link" => "admins#link"
+  get "/articles/image" => "article#image"
   # get "/newses/search_index" => "newses#index"
 
 
   resources :articles, only: [:new, :create, :show] do
-      resource :favorites, only: [:create, :destroy]
-      resource :article_comments, only: [:create, :destroy]
-end
+    resource :favorites, only: [:create, :destroy]
+    resource :article_comments, only: [:create, :destroy]
+  end
+
+  # post   '/favorite/:articles_id' => 'favorites#favorite',   as: 'favorite'
+  # delete '/favorite/:articles_id' => 'favorites#unfavorite', as: 'unfavorite'
 
 end

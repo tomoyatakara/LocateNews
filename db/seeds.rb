@@ -1,3 +1,6 @@
+require 'net/http'
+require 'uri'
+require 'json'
 # # This file should contain all the record creation needed to seed the database with its default values.
 # # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 # #
@@ -37,21 +40,51 @@
 #   )
 # end
 
-genre = [['ビジネス','テクノロジー','エンターテイメント','健康','科学','スポーツ']]
+# genre = [['ビジネス','テクノロジー','エンターテイメント','健康','科学','スポーツ']]
+
+# uri = URI.parse('https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=67f6f9daca624af0bc02696977dafadb')
+# json = Net::HTTP.get(uri) #NET::HTTPを利用してAPIを叩く
+# result = JSON.parse(json) #返ってきたjsonデータをrubyの配列に変換
 
 
 
-require 'net/http'
-require 'uri'
-require 'json'
-
-uri = URI.parse('https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=67f6f9daca624af0bc02696977dafadb')
-json = Net::HTTP.get(uri) #NET::HTTPを利用してAPIを叩く
-result = JSON.parse(json) #返ってきたjsonデータをrubyの配列に変換
 
 
-result['articles'].each do |value|
-   # puts value["urlToImage"]
-   Article.create!(title: value['title'], text: value['description'], image: value['urlToImage'], url: value['url'], publishedAt: value['publishedAt'])
-   # News.create(title: value)
+# uri = URI.parse('https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=67f6f9daca624af0bc02696977dafadb')
+# json = Net::HTTP.get(uri) #NET::HTTPを利用してAPIを叩く
+# result = JSON.parse(json) #返ってきたjsonデータをrubyの配列に変換
+
+
+countries = ['us','mx','br','gb']
+# ,'ru','fr','kr','au','jp']
+categories = ['business','technology', 'health','science','sports','entertaiment']
+
+
+categories.each do |category|
+	genre = Genre.new(name: category)
+	genre.save
 end
+
+countries.each do |country|
+	region = Region.new(name: country)
+	region.save
+end
+
+Region.all.each do |region|
+  Genre.all.each do |genre|
+    uri = URI.parse("https://newsapi.org/v2/top-headlines?country=#{region.name}&category=#{genre.name}&apiKey=32929ade3a4d4443bec86049280116a5")
+    json = Net::HTTP.get(uri) #NET::HTTPを利用してAPIを叩く
+    result = JSON.parse(json) #返ってきたjsonデータをrubyの配列に変換
+    result['articles'].each do |value|
+   # puts value["urlToImage"]
+      Article.create!(region_id: region.id, genre_id: genre.id, title: value['title'], text: value['description'], image: value['urlToImage'], url: value['url'], publishedAt: value['publishedAt'])
+   # News.create(title: value)
+    end
+  end
+
+end
+
+
+
+
+

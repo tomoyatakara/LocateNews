@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+
+    <% if article.favorited_by?(current_user) %>
+        <p><%=link_to 'いいね解除', article_favorites_path(article.id), method: :delete, remote: true %></p>
+    <% else %>
+        <p><%=link_to '👍', article_favorites_path(article.id), method: :post, remote: true %></p>
+    <% end %>
+<% end %>
+    <p><span>いいね: </span><%= article.favorites.count %></p>

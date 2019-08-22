@@ -18,7 +18,7 @@ class ArticleImagesController < ApplicationController
 
    	private
 	def new_params
-			params.require(:new).permit(:title, :text, :image)
+		params.require(:new).permit(:title, :text, :image)
 	end
 
 end

@@ -12,6 +12,18 @@ class AdminsController < ApplicationController
     def show
     end
 
+	# def after_sign_in_path_for(resource)
+ #      case resource
+ #      when Admin
+ #        admins_link_path
+ #      when User
+ #        root_path
+ #      end
+ #    end
+
+ #    def after_sign_out_path_for(resource)
+ #      root_path
+ #    end # ログアウト後に遷移するpathを設定
 
 
 end
