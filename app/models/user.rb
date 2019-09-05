@@ -7,7 +7,6 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :article_images, dependent: :destroy
 
-  has_many :favorites, dependent: :destroy
   has_many :favorite_articles, through: :favolites, source: :story
 
   attachment :image
