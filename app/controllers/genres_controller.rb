@@ -1,23 +1,22 @@
 class GenresController < ApplicationController
 
-　def index
-	@genres = Genre.all
-　end
+	def index
+		@genres = Genre.all
+	end
 
-　def show
-	@genre = Genre.find(params[:id]).limit(33)
-　end
+	def show
+		@genre = Genre.find(params[:id]).limit(33)
+	end
 
-　def create
-	@article = Article.find(params[:article_id])
-	favorite = current_user.favorites.build(article_id: params[:article_id])
-	favorite.save
-　end
+	def create
+		@article = Article.find(params[:article_id])
+		favorite = current_user.favorites.build(article_id: params[:article_id])
+		favorite.save
+	end
 
-  def destroy
-    @article = Article.find(params[:article_id])
-    favorite = Favorite.find_by(article_id: params[:article_id], user_id: current_user.id)
-    favorite.destroy
-  end
-
+	def destroy
+	 	@article = Article.find(params[:article_id])
+	    favorite = Favorite.find_by(article_id: params[:article_id], user_id: current_user.id)
+	    favorite.destroy
+	end
 end
