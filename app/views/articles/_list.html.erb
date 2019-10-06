@@ -1,8 +1,8 @@
 	<%= link_to users_path do %>
 			<%= attachment_image_tag user, :image, fallback: "desert.jpg", size: "100x100", class: "" %>
 		<% end %>
-		<% if user.present? %>
-		  <%= user.name_first %><%= user.name_last %>
+		<% if user_signed_in? %>
+		  <h3><%= user.email %></h3>
 		<% else %>
 		<h3>guest</h3>
 		<% end %>
